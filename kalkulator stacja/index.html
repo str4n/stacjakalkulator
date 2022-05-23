@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Stacja</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="header" class="center">
+        <h2>Kalkulator ceny oleju i benzyny</h2>
+    </div>
+    <div id="form" class="center">
+            <form id="calc">
+            <div id="radio">
+                <input type="radio" id="benzyna" name="bg" checked>
+                <label for="benzyna">Cena benzyny: 
+                    <input type="number"
+                      id="cena_benzyny"
+                      title="Liczba litrów" >
+                      zł/L</label>
+                <br>
+                <input type="radio" id="olej" name="bg">
+                <label for="olej">Cena oleju: 
+                    <input type="number"
+                      id="cena_oleju"                      
+                      title="Liczba litrów">
+                      zł/L</label>
+            </div>
+            <br>
+            <label for="litr">Liczba litrów:</label>
+            <input type="number" 
+            id="litr" 
+            title="Liczba litrów">
+            
+            <input type="button" id="btn" value="Policz" onclick="calc()">
+            
+            <br>
+            <div id="wynik" hidden>
+                <label for="wynik">Cena: </label>
+                <input type="text" id="wynik1" value="" readonly>
+            </div>
+        </form>
+
+        <script>
+            function calc() {
+                let litr1 = parseFloat(document.getElementById("litr").value);
+                let cena;
+                if(document.getElementById("olej").checked == true) {
+                    cena = parseFloat(document.getElementById("cena_oleju").value);
+                } else {
+                    cena = parseFloat(document.getElementById("cena_benzyny").value);
+                }
+                document.getElementById("wynik1").value = (litr1 * cena ).toFixed(2)+"zł";
+                document.getElementById("wynik").hidden = false;
+            }          
+        </script>
+    </div>
+</body>
+</html>
